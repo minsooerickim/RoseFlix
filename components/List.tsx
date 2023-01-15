@@ -56,6 +56,27 @@ export default function List() {
         ) : (
           <div className="grid grid-cols-4">
             <div className="flex flex-col justify-center align-middle items-center col-span-1 h-screen sticky top-0 pr-4">
+              <div className="-mt-16 mb-16">
+                <div className="alert alert-success shadow-lg">
+                  <div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="stroke-current flex-shrink-0 h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span>Successfully Connected!</span>
+                  </div>
+                </div>
+              </div>
+
               <div className="mockup-code">
                 <pre>
                   <code>Welcome to RoseFlix!</code>
