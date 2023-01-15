@@ -16,4 +16,5 @@ model Movies {
   image       String?
   title       String? @unique
   description String?
+  trailerUrl  String?         
 }
