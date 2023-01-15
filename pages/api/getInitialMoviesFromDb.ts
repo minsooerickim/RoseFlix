@@ -15,6 +15,5 @@ export default async function getMovie(
     },
   })
 
-  console.log(movies)
   return res.status(200).json(movies)
 }
