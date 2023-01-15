@@ -1,4 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Inspiration
+
+It starts from a conversation we had with one of our members, who is an avid movie fan, particularly on Netflix. Speaking with them, sparked a realization that films most commonly recommended are either classics or made by well-known production companies. This led us to contemplate the underrepresentation in the entertainment industry, not only in terms of on-screen representation but also in terms of the hardworking individuals behind the scenes such as directors and producers.
+
+With the abundance of film options available today, it can be challenging to find and appreciate truly exceptional movies. Many people base their film choices on the popularity of a specific actor/actress or whether a movie is currently trending. To address this issue, we aim to create a platform that highlights great films for their artistic and technical excellence, rather than just their mainstream appeal.
+
+## What it does
+
+RoseFlix is a website that helps users discover films that highlight underrepresentation in the entertainment industry. Users can search for films based on specific topics of interest, such as films _directed by women_ or films _featuring female empowerment_. Once films are displayed from the search, users can click on a film of interest and watch its trailer to determine if it is a movie that interests them.
+
+By offering a platform for users to explore films that may not have mainstream appeal, RoseFlix aims to give underrepresented voices in the film industry the opportunity to be heard.
+
+## Final Product
+
+<p align="center">
+<img src="public/home.png" alt="image of landing page">
+<img src="public/search.png" alt="image of search page">
+</p>
 
 ## Getting Started
 

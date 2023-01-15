@@ -23,18 +23,18 @@ export default async function getMovie(
   console.log(formattedData.length)
 
   // TODO: uncomment for real thin
-  // for (let i = 0; i < formattedData.length; ++i) {
-  //   if (formattedData[i] != '') {
-  //     const response = await axios.get(
-  //       'https://imdb-api.com/en/API/SearchMovie/' +
-  //         process.env.IMD_API3 +
-  //         '/' +
-  //         formattedData[i],
-  //       GET_CONFIG
-  //     )
-  //     resultsList = resultsList.concat(response.data.results)
-  //   }
-  // }
+  for (let i = 0; i < formattedData.length; ++i) {
+    if (formattedData[i] != '') {
+      const response = await axios.get(
+        'https://imdb-api.com/en/API/SearchMovie/' +
+          process.env.IMD_API3 +
+          '/' +
+          formattedData[i],
+        GET_CONFIG
+      )
+      resultsList = resultsList.concat(response.data.results)
+    }
+  }
 
   // get rid of undefined results
   resultsList.filter((result) => result)
@@ -47,9 +47,9 @@ export default async function getMovie(
   // })
 
   // load json data (for static data)
-  var json = require('/Users/minsookim/Documents/Github/whereiskanin/cars.json')
+  // var json = require('/Users/minsookim/Documents/Github/whereiskanin/cars.json')
 
-  json.map(async ({ id, resultType, image, title, description }) => {
+  resultsList.map(async ({ id, resultType, image, title, description }) => {
     // check if movie exists first
     const movieExists = await prisma.movies.count({
       where: {
@@ -70,6 +70,6 @@ export default async function getMovie(
     }
   })
 
-  return res.status(200).json(json)
+  return res.status(200).json(resultsList)
   // return res.status(200).json(resultsList)
 }
