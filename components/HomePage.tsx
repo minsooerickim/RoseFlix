@@ -6,8 +6,8 @@ import { BsSearch } from 'react-icons/bs'
 export default function HomePage() {
   return (
     <section className="dark:bg-gray-800 dark:text-gray-100 h-screen items-center align-middle justify-center">
-      <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
-        <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+      <div className="container flex flex-col justify-center align-middle items-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
+        <div className="flex items-center align-middle justify-center p-6 mt-8">
           <img
             src="https://motivat-io.s3.us-west-1.amazonaws.com/Business_SVG.svg"
             alt=""
