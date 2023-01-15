@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
 
@@ -104,13 +105,15 @@ export default function List() {
               </div>
             </div>
 
-            <div className="grid grid-cols-3 col-span-3 space-x-4 space-y-4">
+            <div className="grid grid-cols-3 col-span-3 space-x-6 space-y-6 pr-4">
               {movies.map(
                 ({ id, resultType, image, title, description }) =>
                   image && (
-                    <div
+                    <motion.div
                       key={id}
-                      className="flex flex-col col-span-1 justify-center items-center"
+                      className="flex flex-col col-span-1 justify-center items-center hover:cursor-pointer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.995 }}
                     >
                       <img
                         src={image}
@@ -118,7 +121,7 @@ export default function List() {
                         className=" rounded-2xl"
                         width={500}
                       />
-                    </div>
+                    </motion.div>
                   )
               )}
             </div>
