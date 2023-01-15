@@ -26,13 +26,13 @@ export default function List() {
         })
         const data = await res.json()
         setData(data)
-        setIsLoading(false)
         await axios
           .post('/api/getMovie', { data: data.text })
           .then(function (res) {
             setMovies(res.data)
             console.log(movies)
           })
+        setIsLoading(false)
       }
     }
 
