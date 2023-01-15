@@ -2,6 +2,7 @@ import axios from 'axios'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
+import Router from 'next/router'
 
 export default function List() {
   const [movies, setMovies] = useState([])
@@ -11,6 +12,12 @@ export default function List() {
   const [search, setSearch] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
+  const router = (url) => {
+    console.log('inside' + url)
+    if (url) {
+      Router.push(url)
+    }
+  }
   useEffect(() => {
     const fetchData = async () => {
       if (search) {
@@ -128,13 +135,14 @@ export default function List() {
 
             <div className="grid grid-cols-3 col-span-3 space-x-6 space-y-6 pr-4">
               {movies.map(
-                ({ id, resultType, image, title, description }) =>
+                ({ id, resultType, image, title, description, trailerUrl }) =>
                   image && (
                     <motion.div
                       key={id}
                       className="flex flex-col col-span-1 justify-center items-center hover:cursor-pointer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.995 }}
+                      onClick={() => router(trailerUrl)}
                     >
                       <img
                         src={image}
