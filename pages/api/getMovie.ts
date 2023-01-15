@@ -9,36 +9,38 @@ export default async function getMovie(
 ) {
   const { data } = req.body
 
-  // roy does parsing
   var formattedData = String(data).split('\n')
-  // console.log(formattedData)
-  // for (let i = 0; i < formattedData.length; ++i) {
-  //   console.log(formattedData[i])
-  //   formattedData[i] = formattedData[i].splice(3)
-  // }
-  // console.log(formattedData)
 
   var resultsList: { firstResult: any }[] = []
   console.log(formattedData.length)
-  for (let i = 0; i < formattedData.length; ++i) {
-    if (formattedData[i] != '') {
-      const response = await axios.get(
-        'https://imdb-api.com/en/API/SearchMovie/' +
-          process.env.IMD_API2 +
-          '/' +
-          formattedData[i],
-        GET_CONFIG
-      )
-      resultsList.push(response.data.results[0])
-    }
-  }
 
-  // const response = await axios.get(
-  //   'https://imdb-api.com/en/API/SearchMovie/' + process.env.IMD_API2 + '/lion',
-  //   GET_CONFIG
-  // )
+  // TODO: uncomment for real thin
+  // for (let i = 0; i < formattedData.length; ++i) {
+  //   if (formattedData[i] != '') {
+  //     const response = await axios.get(
+  //       'https://imdb-api.com/en/API/SearchMovie/' +
+  //         process.env.IMD_API3 +
+  //         '/' +
+  //         formattedData[i],
+  //       GET_CONFIG
+  //     )
+  //     resultsList.push(response.data.results[0])
+  //   }
+  // }
 
-  // const response = await axios.get('https://imdb-api.com/en/API/SearchMovie/' + process.env.IMD_API + '/' + { title }, GET_CONFIG)
-  console.log(resultsList)
+  // get rid of undefined results
+  resultsList.filter((result) => result)
+
+  // write json data
+  // var fs = require('fs')
+  // fs.writeFile('input.json', JSON.stringify(resultsList), function (err: any) {
+  //   if (err) throw err
+  //   console.log('complete')
+  // })
+
+  // load json data
+  var json = require('/Users/minsookim/Documents/Github/whereiskanin/input.json')
+
+  return res.status(200).json(json)
   return res.status(200).json(resultsList)
 }

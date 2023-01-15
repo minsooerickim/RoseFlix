@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { GET_CONFIG } from '@/util/consts'
 
 export default function List() {
   const [movies, setMovies] = useState([])
@@ -26,11 +25,12 @@ export default function List() {
         const data = await res.json()
         setData(data)
         setIsLoading(false)
-        axios.post('/api/getMovie', { data: data.text }).then(function (res) {
-          console.log(res.data + 'bruh')
-          setMovies(res.data)
-          console.log(movies)
-        })
+        await axios
+          .post('/api/getMovie', { data: data.text })
+          .then(function (res) {
+            setMovies(res.data)
+            console.log(movies)
+          })
       }
     }
 
@@ -65,7 +65,7 @@ export default function List() {
 
     <div>
       <div>
-        <h3>Enter Genre:</h3>
+        <h3 className="text-red-500">Enter Genre:</h3>
         <input
           type="text"
           value={query}
@@ -79,18 +79,20 @@ export default function List() {
         {isLoading ? (
           <div>Loading ...</div>
         ) : (
-          <div>
-            {movies.map(({ id, resultType, image, title, description }) => (
-              <div key={id}>
-                <p>{title}</p>
-                <img
-                  src={image}
-                  alt="movie thumbnail"
-                  className="w-full"
-                  width={500}
-                />
+          <div className="grid grid-cols-3">
+            <div className="flex justify-center align-middle items-center col-span-1">
+              filters
+            </div>
+            <div className="grid grid-cols-2 col-span-2">
+              <div>
+                {movies.map(({ id, resultType, image, title, description }) => (
+                  <div key={id} className=" col-span-1">
+                    <p className=" text-red-500">{title}</p>
+                    <img src={image} alt="movie thumbnail" />
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
             {/* <span>{data.text}</span>
             <img
               src={image}
