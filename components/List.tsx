@@ -75,23 +75,28 @@ export default function List() {
           Search
         </button>
 
-        <h4>Movies</h4>
         {isLoading ? (
           <div>Loading ...</div>
         ) : (
-          <div className="grid grid-cols-3">
+          <div className="grid grid-cols-4">
             <div className="flex justify-center align-middle items-center col-span-1">
               filters
             </div>
-            <div className="grid grid-cols-2 col-span-2">
-              <div>
-                {movies.map(({ id, resultType, image, title, description }) => (
-                  <div key={id} className=" col-span-1">
-                    <p className=" text-red-500">{title}</p>
-                    <img src={image} alt="movie thumbnail" />
-                  </div>
-                ))}
-              </div>
+            <div className="grid grid-cols-3 col-span-3 space-x-4 space-y-4">
+              {movies.map(({ id, resultType, image, title, description }) => (
+                <div
+                  key={id}
+                  className="flex flex-col col-span-1 justify-center items-center"
+                >
+                  {/* <p>{title}</p> */}
+                  <img
+                    src={image}
+                    alt="movie thumbnail"
+                    className=" rounded-2xl"
+                    width={500}
+                  />
+                </div>
+              ))}
             </div>
             {/* <span>{data.text}</span>
             <img
