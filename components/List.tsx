@@ -83,20 +83,23 @@ export default function List() {
               filters
             </div>
             <div className="grid grid-cols-3 col-span-3 space-x-4 space-y-4">
-              {movies.map(({ id, resultType, image, title, description }) => (
-                <div
-                  key={id}
-                  className="flex flex-col col-span-1 justify-center items-center"
-                >
-                  {/* <p>{title}</p> */}
-                  <img
-                    src={image}
-                    alt="movie thumbnail"
-                    className=" rounded-2xl"
-                    width={500}
-                  />
-                </div>
-              ))}
+              {movies.map(
+                ({ id, resultType, image, title, description }) =>
+                  image && (
+                    <div
+                      key={id}
+                      className="flex flex-col col-span-1 justify-center items-center"
+                    >
+                      {/* <p>{title}</p> */}
+                      <img
+                        src={image}
+                        alt="movie thumbnail"
+                        className=" rounded-2xl"
+                        width={500}
+                      />
+                    </div>
+                  )
+              )}
             </div>
             {/* <span>{data.text}</span>
             <img

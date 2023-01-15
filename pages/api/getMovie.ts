@@ -13,7 +13,13 @@ export default async function getMovie(
 
   var formattedData = String(data).split('\n')
 
-  var resultsList: { firstResult: any }[] = []
+  var resultsList: {
+    id: string
+    resultType: string
+    image: string
+    title: string
+    description: string
+  }[] = []
   console.log(formattedData.length)
 
   // TODO: uncomment for real thin
@@ -26,7 +32,7 @@ export default async function getMovie(
   //         formattedData[i],
   //       GET_CONFIG
   //     )
-  //     resultsList.push(response.data.results[0])
+  //     resultsList = resultsList.concat(response.data.results)
   //   }
   // }
 
@@ -35,42 +41,35 @@ export default async function getMovie(
 
   // write json data
   // var fs = require('fs')
-  // fs.writeFile('input.json', JSON.stringify(resultsList), function (err: any) {
+  // fs.writeFile('cars.json', JSON.stringify(resultsList), function (err: any) {
   //   if (err) throw err
   //   console.log('complete')
   // })
 
-  // load json data
-  var json = require('/Users/minsookim/Documents/Github/whereiskanin/input.json')
+  // load json data (for static data)
+  var json = require('/Users/minsookim/Documents/Github/whereiskanin/cars.json')
 
   json.map(async ({ id, resultType, image, title, description }) => {
     // check if movie exists first
     const movieExists = await prisma.movies.count({
       where: {
-        AND: [
-          {
-            id: id,
-          },
-        ],
-      },
-    })
-    if (movieExists > 0) {
-      return res
-        .status(200)
-        .json({ message: 'movie already exists in the database' })
-    }
-    // register movie in db
-    await prisma.movies.create({
-      data: {
-        id: id,
-        resultType: resultType,
-        image: image,
         title: title,
-        description: description,
       },
     })
+    if (movieExists == 0) {
+      // register movie in db
+      await prisma.movies.create({
+        data: {
+          id: id,
+          resultType: resultType,
+          image: image,
+          title: title,
+          description: description,
+        },
+      })
+    }
   })
 
   return res.status(200).json(json)
-  return res.status(200).json(resultsList)
+  // return res.status(200).json(resultsList)
 }
