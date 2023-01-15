@@ -38,32 +38,16 @@ export default function List() {
     fetchData()
   }, [search])
 
-  //   useEffect(() => {
-  //     const titles = data.text
-  //     console.log(data.text + 'called')
-  //     axios.get('/api/getMovie', { data: data.text }).then(function (res) {
-  //       console.log(res)
-  //       setMovies(res.data)
-  //     })
-  //   }, [data])
+  useEffect(() => {
+    axios
+      .get('/api/getInitialMoviesFromDb', { data: data.text })
+      .then(function (res) {
+        console.log(res.data)
+        setMovies(res.data)
+      })
+  }, [])
 
   return (
-    // <div>
-    //   {movies.map(({ id, resultType, image, title, description }) => (
-    //     <div key={id}>
-    //       <p>
-    //         {title} directed by {}
-    //       </p>
-    //       <img
-    //         src={image}
-    //         alt="movie thumbnail"
-    //         className="w-full"
-    //         width={100}
-    //       />
-    //     </div>
-    //   ))}
-    // </div>
-
     <div>
       <div>
         {isLoading ? (
@@ -128,7 +112,6 @@ export default function List() {
                       key={id}
                       className="flex flex-col col-span-1 justify-center items-center"
                     >
-                      {/* <p>{title}</p> */}
                       <img
                         src={image}
                         alt="movie thumbnail"
@@ -139,13 +122,6 @@ export default function List() {
                   )
               )}
             </div>
-            {/* <span>{data.text}</span>
-            <img
-              src={image}
-              alt="movie thumbnail"
-              className="w-full"
-              width={100}
-            /> */}
           </div>
         )}
       </div>
