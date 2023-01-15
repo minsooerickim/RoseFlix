@@ -24,10 +24,10 @@ export default function Navbar() {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Homepage</a>
+              <a href='/'>Homepage</a>
             </li>
             <li>
-              <a>About</a>
+              <a href='/search'>Search</a>
             </li>
           </ul>
         </div>

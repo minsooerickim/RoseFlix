@@ -8,7 +8,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <h1>hello world fr</h1>
-
+    <div className="px-4 py-4 h-screen w-full">
+      <List />
+    </div>
   )
 }
