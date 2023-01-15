@@ -52,7 +52,7 @@ export default function List() {
     <div>
       <div>
         {isLoading ? (
-          <div>Loading ...</div>
+          <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400 absolute w-full h-screen top-1/2 left-1/2"></div>
         ) : (
           <div className="grid grid-cols-4">
             <div className="flex flex-col justify-center align-middle items-center col-span-1 h-screen sticky top-0 pr-4">
