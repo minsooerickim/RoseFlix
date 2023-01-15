@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { BsSearch } from 'react-icons/bs'
 
 export default function List() {
   const [movies, setMovies] = useState([])
@@ -65,23 +66,60 @@ export default function List() {
 
     <div>
       <div>
-        <h3 className="text-red-500">Enter Genre:</h3>
-        <input
-          type="text"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-        />
-        <button type="button" onClick={() => setSearch(query)}>
-          Search
-        </button>
-
         {isLoading ? (
           <div>Loading ...</div>
         ) : (
           <div className="grid grid-cols-4">
-            <div className="flex justify-center align-middle items-center col-span-1">
-              filters
+            <div className="flex flex-col justify-center align-middle items-center col-span-1 h-screen sticky top-0">
+              <div className="mockup-code">
+                <pre>
+                  <code>Welcome to RoseFlix!</code>
+                </pre>
+              </div>
+
+              <div className="form-control w-full max-w-xs pt-16">
+                <div className="flex flex-row items-center">
+                  <input
+                    type="text"
+                    placeholder="Type here"
+                    className="input input-bordered w-full max-w-xs"
+                    onChange={(event) => setQuery(event.target.value)}
+                  />
+                  <span
+                    className="pl-4 hover:cursor-pointer"
+                    onClick={() => setSearch(query)}
+                  >
+                    <BsSearch />
+                  </span>
+                </div>
+              </div>
+              <p className=" text-center py-4">
+                Please type in the type of movies or shows you would like to
+                see!
+              </p>
+
+              <div className="chat chat-start pt-16">
+                <div className="chat-image avatar">
+                  <div className="w-10 rounded-full">
+                    <img src="https://placeimg.com/192/192/people" />
+                  </div>
+                </div>
+                <div className="chat-bubble">
+                  Give me a list of movies about women empowerment!
+                </div>
+              </div>
+              <div className="chat chat-start py-4">
+                <div className="chat-image avatar">
+                  <div className="w-10 rounded-full">
+                    <img src="https://placeimg.com/192/192/people" />
+                  </div>
+                </div>
+                <div className="chat-bubble">
+                  Give me a list of shows directed by female directors!
+                </div>
+              </div>
             </div>
+
             <div className="grid grid-cols-3 col-span-3 space-x-4 space-y-4">
               {movies.map(
                 ({ id, resultType, image, title, description }) =>
