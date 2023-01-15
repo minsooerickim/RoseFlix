@@ -70,7 +70,7 @@ export default function List() {
           <div>Loading ...</div>
         ) : (
           <div className="grid grid-cols-4">
-            <div className="flex flex-col justify-center align-middle items-center col-span-1 h-screen sticky top-0">
+            <div className="flex flex-col justify-center align-middle items-center col-span-1 h-screen sticky top-0 pr-4">
               <div className="mockup-code">
                 <pre>
                   <code>Welcome to RoseFlix!</code>
