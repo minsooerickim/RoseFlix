@@ -1,3 +1,4 @@
+## 🌹 Winner of RoseHack 2023!! 🥇
 ## What it does
 
 RoseFlix is a website that helps users discover films that highlight underrepresentation in the entertainment industry. Users can search for films based on specific topics of interest, such as films directed by women or films featuring female empowerment. Once films are displayed from the search, users can click on a film of interest and watch its trailer to determine if it is a movie that interests them.
